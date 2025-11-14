@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\SiteController;
-use App\Http\Controllers\Saudacao;
-use App\Models\Client;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,34 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+  return view('home'); // renders resources/views/home.blade.php
+})->name('index');
 
-Route::get('/', [SiteController::class, 'index'])->name('index');
-
-Route::get('/sobre', [SiteController::class, 'sobre']);
-
-Route::get('/contato', [SiteController::class, 'contato']);
-
-Route::get('/servicos', [SiteController::class, 'servicos']);
-
-Route::get('/servico/{id}', [SiteController::class, 'servico']);
-
-Route::get('/saudacao/{nome?}', Saudacao::class);
-
-
-//SE CASO FOR DE URL DIFERENTE OU ALGO DO GENERO DEVE SER USADO ROUTE SEPARADO OU SE FOR DO MESMO USAR O ROUTE UTILIZADO ABAIXO
-// função name para declarar um nome da pagina que eu quero chamar no href
-// Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
-// Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
-// Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
-// Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
-// Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
-// Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
-// Route::delete('/clients/{id}', [ClientController::class], 'destroy')->name('clients.destroy');
-
-//USANDO O RESOURCE PARA DIMINUIR A QUANTIDADE DE TOUTES DA MESMA PAGINA
+/*
+|--------------------------------------------------------------------------
+| Clients resource route
+|--------------------------------------------------------------------------
+| Registers RESTful resource routes for ClientController.
+| This single line generates the standard CRUD routes:
+|   GET       /clients                  -> index   (clients.index)
+|   GET       /clients/create           -> create  (clients.create)
+|   POST      /clients                  -> store   (clients.store)
+|   GET       /clients/{client}         -> show    (clients.show)
+|   GET       /clients/{client}/edit    -> edit    (clients.edit)
+|   PUT/PATCH /clients/{client}         -> update  (clients.update)
+|   DELETE    /clients/{client}         -> destroy (clients.destroy)
+|
+| Use this for conventional Create/Read/Update/Delete operations.
+| If ClientController type-hints the Client model for route parameters,
+| Laravel will apply implicit route model binding for {client}.
+*/
 Route::resource('clients', ClientController::class);
 
 

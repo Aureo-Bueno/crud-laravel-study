@@ -14,8 +14,8 @@ Uma aplicação backend desenvolvida com Laravel 11 e PHP 8.3, utilizando arquit
 ### 1. Clonar o repositório
 
 ```bash
-git clone <seu-repositorio-url>
-cd <nome-do-projeto>
+git clone https://github.com/Aureo-Bueno/Projeto-Laravel---CRUD.git
+cd Projeto-Laravel---CRUD
 ```
 
 ### 2. Instalar dependências PHP
